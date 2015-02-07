@@ -2,6 +2,7 @@ extern crate semver;
 
 use semver::Version;
 // use std::thread::Thread;
+use std::num::{Int,ToPrimitive};
 
 fn main() {
     {
@@ -123,10 +124,20 @@ fn main() {
 
     {
         // generics
-        let x: Option<i32> = Some(5);
+        // let x: Option<i32> = Some(5);
         let y = Some::<i32>(5);
         let z = Some(5);
-        z.or(Some(1f32));
-        println!("Y is {}", y);
+        z.or(Some(1i32));
+        println!("Y is {:?}", y);
+    }
+
+    { // casting / number stuff
+        println!("usize: {}", 4294967296us);
+        println!("usize as u32: {}", 4294967296us as u32); // overflows silently
+
+        println!("Max usize: {}", <usize as Int>::max_value());
+
+        println!("right size usize to_u32: {:?}", 4294967295us.to_u32());
+        println!("too big usize to_u32: {:?}", 4294967296us.to_u32());
     }
 }
