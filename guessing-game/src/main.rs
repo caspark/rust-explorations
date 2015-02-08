@@ -1,4 +1,4 @@
-use std::io;
+use std::old_io;
 use std::rand;
 use std::cmp::Ordering;
 
@@ -10,10 +10,10 @@ fn main() {
     loop {
         println!("Please input your guess.");
 
-        let input = io::stdin().read_line()
+        let input = old_io::stdin().read_line()
             .ok()
             .expect("Failed to read line");
-        let input_num: Option<u32> = input.trim().parse();
+        let input_num: Option<u32> = input.trim().parse().ok();
         let num = match input_num {
             Some(num) => num,
             None => {
