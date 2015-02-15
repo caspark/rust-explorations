@@ -139,5 +139,11 @@ fn main() {
 
         println!("right size usize to_u32: {:?}", 4294967295us.to_u32());
         println!("too big usize to_u32: {:?}", 4294967296us.to_u32());
+
+        println!("large u64 to float: {} goes to {}", <u64 as Int>::max_value(), <u64 as Int>::max_value() as f64);
+        println!("large i64 to float: {} goes to {}", <i64 as Int>::max_value(), <i64 as Int>::max_value() as f64);
+        println!("large i32 to float: {} goes to {}", <i32 as Int>::max_value(), <i32 as Int>::max_value() as f64);
+
+        println!("float precision issues: (0u32 - 2u32) as f64 / (0u32 - 1u32) as f64 = {}? nope!",  (0u32 - 2u32) as f64 / (0u32 - 1u32) as f64);
     }
 }
